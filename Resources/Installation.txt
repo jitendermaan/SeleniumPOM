@@ -1,0 +1,5 @@
+pip install -U selenium
+
+pip install -U lxml
+
+pip install PyAutoGUI
