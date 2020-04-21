@@ -40,13 +40,18 @@ class SeleniumDriver:
     def driver(self, browserType): 
         try: 
             if 'Chrome' ==browserType:
+                
                 self.strBrowser='Chrome' 
                 options = webdriver.ChromeOptions() 
                 options.add_argument('--ignore-certificate-errors') 
                 options.add_argument("--test-type")
-                self.currDriver = webdriver.Chrome(self.config.configuration[ 'Driver']['Chrome_Driver'], chrome_options=options) 
+                self.currDriver = webdriver.Chrome(executable_path=self.config.configuration[ 'Driver']['Chrome_Driver'], chrome_options=options) 
             if 'IE'==browserType:
-                self.currDriver=webdriver.Ie(self.config.configuration['Driver']['ie_driver']) 
+                self.currDriver=webdriver.Ie(executable_path=self.config.configuration['Driver']['ie_driver']) 
+            if 'Edge'==browserType:
+                self.currDriver=webdriver.Edge(executable_path=self.config.configuration['Driver']['edge_driver']) 
+            if 'FireFox'==browserType:
+                self.currDriver=webdriver.Firefox(executable_path=self.config.configuration['Driver']['firefox_driver'])
         except SeleniumException.WebDriverException as e:
             messagebox.showinfo('WebDriverException',e)
             

@@ -42,6 +42,8 @@ class Setting:
         chromePathVar.trace( 'w',lambda name, index, mode, sv=chromePathVar: self.updateConfigFromEntry(sv, 'chrome_driver'))
         IEPathVar=Tkinter.StringVar() 
         IEPathVar.trace('w',lambda name, index, mode, sv=IEPathVar: self.updateConfigFromEntry(sv,'ie_driver'))
+        EdgePathVar=Tkinter.StringVar() 
+        EdgePathVar.trace('w',lambda name, index, mode, sv=EdgePathVar: self.updateConfigFromEntry(sv,'edge_driver'))
         FFPathVar=Tkinter.StringVar() 
         FFPathVar.trace('w',lambda name, index, mode, sv=FFPathVar: self.updateConfigFromEntry(sv, 'firefox_driver'))
         
@@ -58,12 +60,20 @@ class Setting:
         IEDriverPath.insert(0, self.config[ 'Driver']['ie_driver']) 
         IEbrowseButton=ttk.Button(SettingFrame, text= 'Browser', command= lambda: self.getDriverPath(IEDriverPath)) 
         IEbrowseButton.grid(row=1, column=2, padx=5, pady=5)
-        Label(SettingFrame, text='Firefox Driver').grid(column=0, row=2, sticky='we', padx=5, pady=5) 
+        
+        Label(SettingFrame, text='Edge Driver').grid(column=0, row=2, sticky='we', padx=5, pady=5) 
+        EdgeDriverPath = Entry(SettingFrame, textvariable=EdgePathVar) 
+        EdgeDriverPath.grid(row=2, column=1, padx=5, sticky="we", pady=5) 
+        EdgeDriverPath.insert(0,self.config['Driver']['edge_driver'])
+        EdgebrowseButton=ttk.Button (SettingFrame, text="Browse", command= lambda: self.getDriverPath(EdgeDriverPath)) 
+        EdgebrowseButton.grid(row=2, column=2, padx=5,pady=5)
+        
+        Label(SettingFrame, text='Firefox Driver').grid(column=0, row=3, sticky='we', padx=5, pady=5) 
         FireFoxDriverPath = Entry(SettingFrame, textvariable=FFPathVar) 
-        FireFoxDriverPath.grid(row=2, column=1, padx=5, sticky="we", pady=5) 
+        FireFoxDriverPath.grid(row=3, column=1, padx=5, sticky="we", pady=5) 
         FireFoxDriverPath.insert(0,self.config['Driver']['firefox_driver'])
         FireFoxbrowseButton=ttk.Button (SettingFrame, text="Browse", command= lambda: self.getDriverPath(FireFoxDriverPath)) 
-        FireFoxbrowseButton.grid(row=2, column=2, padx=5,pady=5)
+        FireFoxbrowseButton.grid(row=3, column=2, padx=5,pady=5)
         
     def updateConfigFromEntry(self, sv, key):
         self.config.set( 'Driver',key,sv.get())

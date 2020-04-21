@@ -69,7 +69,7 @@ class myApp:
         Label(top, text='Enter Base URL :').grid(column=0, row=0) 
         self.txtURL =Entry(top)
         self.txtURL.grid(column=1, row=0, sticky='we')
-        browserCombo=ttk.Combobox(top, values=['Chrome', 'IE', 'FireFox '], state='readonly') 
+        browserCombo=ttk.Combobox(top, values=['Chrome', 'IE','Edge', 'FireFox'], state='readonly') 
         browserCombo.set('Chrome') 
         browserCombo.grid(column=2, row=0, padx=5) 
         self.Launchbtn = ttk.Button(top, text="Launch",command=lambda : self.SelDriver.LaunchBrowser(browserCombo.get(),self.txtURL.get()))
