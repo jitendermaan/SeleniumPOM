@@ -6,7 +6,7 @@ import Settings as ST
 #===============================================================================
 # from lxml.etree import XPathEvalError
 #===============================================================================
-import pyautogui as PYAUTO  
+import pyautogui as PYAUTO
 import time
 try:
     import Tkinter
