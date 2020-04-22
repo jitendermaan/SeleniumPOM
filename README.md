@@ -1,4 +1,4 @@
 # SeleniumPOM
 Tool to create Object Repository for Selenium projects
 
-[link to Google!](./PreRequisite.md)
+PreRequisite to execute this project (./PreRequisite.md)
