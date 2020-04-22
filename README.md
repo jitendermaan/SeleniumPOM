@@ -3,7 +3,7 @@ Tool to create Object Repository for Selenium projects
 
 [PreRequisite to execute this project](./PreRequisite.md)
 
-### Guide to Use Selenium POM
+* ### Guide to Use Selenium POM
 Once you have cloned the project. Run Object Model file in your IDE
 
 #### Create new Repository:
