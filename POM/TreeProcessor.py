@@ -6,7 +6,7 @@ Created on Apr 19, 2020
 import sys 
 import xml.etree.ElementTree as ET 
 from tkinter import IntVar,StringVar, Checkbutton, TclError,messagebox 
-import Util as Util 
+import POM.Util as Util 
 
 class POMTree: 
     def __init__(self,config, tree=None, XML=None):
@@ -145,7 +145,7 @@ class TreePOMObject():
             self.DisplayName=kwargs['displayname'] 
             self.ParentID=kwargs['parentid'] if 'parentid' in kwargs else None 
             self.ObjectID=self.ParentID+'_'+self.DisplayName if self.ParentID!=None else self.DisplayName 
-            if 'obiecttype' in kwargs and kwargs ['objecttype']!=None:
+            if 'objecttype' in kwargs and kwargs ['objecttype']!=None:
                 self.ObjectType=kwargs['objecttype'] 
             elif 'tag' in self.attrDict and (self.attrDict['tag']=='frame' or self.attrDict['tag']=='iframe'):
                 self.ObjectType='POM_' +self.attrDict['tag'] 

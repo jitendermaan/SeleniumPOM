@@ -1,19 +1,16 @@
-import XMLProcessor as XMLProcessor 
-import TreeProcessor as TreeProcessor 
-import SeleniumProcessor as SeleniumProcessor
-import Util as Util 
-import Settings as ST 
+import POM.XMLProcessor as XMLProcessor
+import POM.TreeProcessor as TreeProcessor 
+import POM.SeleniumProcessor as SeleniumProcessor
+import POM.Util as Util 
+import POM.Settings as ST 
 #===============================================================================
 # from lxml.etree import XPathEvalError
 #===============================================================================
 import pyautogui as PYAUTO
 import time
-try:
-    import Tkinter
-    import ttk
-except ImportError:
-    import tkinter as Tkinter
-    import tkinter.ttk as ttk
+
+import tkinter as Tkinter
+import tkinter.ttk as ttk
 from tkinter import filedialog, Scrollbar, TclError, Menu, mainloop, Label, messagebox, Frame, Entry,Toplevel,StringVar, Tk, Canvas
 from tkinter.filedialog import asksaveasfile
 from tkinter import Checkbutton
@@ -22,7 +19,7 @@ class myApp:
     def __init__(self):
         self.root = Tk()
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=(None, 12),background="green")
+        style.configure("Treeview.Heading", font=(None, 11),background="green")
         self.config=ST.Setting(self.root)
         self.SelDriver=SeleniumProcessor.SeleniumDriver(self.config)
         self.POMTreeView=TreeProcessor.POMTree(self.config) 
@@ -39,10 +36,10 @@ class myApp:
         self.root.config(menu=menu) 
         filemenu = Menu(menu) 
         menu.add_cascade (label="File", menu=filemenu) 
-        filemenu.add_command(label="Create New OR..", command=self.NewFile) 
-        filemenu.add_command(label="Open OR...", command=self.OpenFile) 
-        filemenu.add_command(label="Save OR...", command=self.SaveFile) 
-        filemenu.add_command(label="Save as OR...", command=self.SaveFileAs) 
+        filemenu.add_command(label="Create New POM..", command=self.NewFile) 
+        filemenu.add_command(label="Open POM...", command=self.OpenFile) 
+        filemenu.add_command(label="Save POM...", command=self.SaveFile) 
+        filemenu.add_command(label="Save as POM...", command=self.SaveFileAs) 
         filemenu.add_separator() 
         filemenu.add_command(label="Exit", command=self.root.destroy)
         

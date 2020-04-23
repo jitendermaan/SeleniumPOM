@@ -6,7 +6,7 @@ Created on Feb 16, 2020
 from tkinter import Toplevel 
 import os 
 import configparser
-import Util 
+import POM.Util 
 from tkinter import Tk 
 
 import tkinter as Tkinter
@@ -15,7 +15,10 @@ from tkinter import filedialog, Frame, Label, Entry, LabelFrame
 
 class Setting:
     def __init__(self,root=None):
-        self.CONFIG_PATH=os.path.abspath('../Resources/Settings.ini') 
+        #=======================================================================
+        # self.CONFIG_PATH=os.path.abspath('../Resources/Settings.ini') 
+        #=======================================================================
+        self.CONFIG_PATH=os.path.abspath('C:/Users/maan/gittest/Resources/Settings.ini')
         self.root=root 
         self.config=None 
         self.configDict={} 
