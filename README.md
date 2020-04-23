@@ -6,6 +6,8 @@ Tool to create Object Repository for Selenium projects
 * ### Guide to Use Selenium POM
 Once you have cloned the project. Run Object Model file in your IDE
 
+[Create New Repository](#Create-new-Repository)
+
 #### Create new Repository:
 *   Click on File-->Create New POM..  
 ![CreateNewFile](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/CreateNewFile.jpg)  
