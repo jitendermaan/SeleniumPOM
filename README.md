@@ -8,6 +8,9 @@ Once you have cloned the project. Run Object Model file in your IDE
 
 1. [Create New Page Object Model](#Create-new-Page-Object-Model)  
 2. [Add Object from WebPage](#Add-Object-from-WebPage)
+3. [Add Object with Delay](#Add-Object-with-Delay)
+4. [Add Object Manually](#Add-Object-Manually)
+
 
 #### Create new Page Object Model:
 *   Click on File-->Create New POM..  
@@ -42,3 +45,9 @@ Ex: in below example, i have updated the display name of the img_ to img_NewDisp
 
 5. Click on Add Object: This will add the object in POM Repository.
 ![Update Object](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/ObjectAdded.jpg)
+
+### Add Object with Delay
+It is helpful when you have to select any dropdown or any other object that will disappear when focus is moved from that object. like Dropdown Menu items. This will wait for 5 seconds and add the object based on mouse pointer location. Please make sure that cursor is on the object that you want to add.
+
+1. Launch browser using the tool and Click on Add object with Delay:   
+It will start a 5 sec counter on top left of your screen. Before that timer hits to 0 move your mouse pointer to the object you want to add.
