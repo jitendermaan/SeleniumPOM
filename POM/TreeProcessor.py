@@ -261,7 +261,7 @@ class ObjectPropertyTree:
     def createObjectTree(self, attributeList, currParentObject): 
         for objAttrMap in attributeList:
             currParentObject=self.createTreeObject(currParentObject, objAttrMap)
-            
+        Util.focusTree(self.objTree, currParentObject.ObjectID)   
     def createTreeObject(self,currParentObject=None, objAttrMap=None): 
         if objAttrMap==None:
             objAttrMap={} 
@@ -284,11 +284,15 @@ class ObjectPropertyTree:
         self.objectDict[self.objectId]=currObject 
         if currParentObject!=None and (currParentObject.ObjectType=='POM_Page' or currParentObject.ObjectType=='POM_frame' or currParentObject.ObjectType=='POM_iframe'): 
             currParentObject.childList.append(currObject) 
-            self.ParentID=currParentObject.ObjectID
+            if (currObject.ObjectType=='POM_frame' or currObject.ObjectType=='POM_iframe'): 
+                self.ParentID=currParentObject.ObjectID
+                currParentObject=currObject
         currObject.addTree(self.objTree, objectid=self.objectId, displayname=currObject.DisplayName, parentid=self.ParentID)
-
-        Util.focusTree(self.objTree, currObject.ObjectID)
         
+        return currParentObject
+        #=======================================================================
+        # Util.focusTree(self.objTree, currObject.ObjectID)
+        #=======================================================================
     def getObjectDict(self):
         return self.objectDict
     

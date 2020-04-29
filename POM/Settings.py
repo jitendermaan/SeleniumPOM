@@ -4,21 +4,18 @@ Created on Feb 16, 2020
 @author: maan
 '''
 from tkinter import Toplevel 
-import os 
+import os
 import configparser
-import POM.Util 
+import sys
 from tkinter import Tk 
-
+import POM.Util as Util 
 import tkinter as Tkinter
 import tkinter.ttk as ttk 
 from tkinter import filedialog, Frame, Label, Entry, LabelFrame
 
 class Setting:
     def __init__(self,root=None):
-        #=======================================================================
-        # self.CONFIG_PATH=os.path.abspath('../Resources/Settings.ini') 
-        #=======================================================================
-        self.CONFIG_PATH=os.path.abspath('C:/Users/maan/gittest/Resources/Settings.ini')
+        self.CONFIG_PATH=os.path.abspath(Util.get_correct_path('../Resources/Settings.ini'))
         self.root=root 
         self.config=None 
         self.configDict={} 

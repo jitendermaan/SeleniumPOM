@@ -28,7 +28,7 @@ class myApp:
         self.tree=None 
         self.treeValues=None 
         self.ScreenCoverWindow=None 
-        self.root.title("OR manager") 
+        self.root.title("POM Manager") 
         self.root.geometry('700x600')
 #MENU SECTION : to create Menu
 # File Menu 
@@ -240,7 +240,7 @@ class myApp:
             AddChildButton=ttk.Button(attributes, text='Add child Object ') 
             AddChildButton['command' ]=lambda : self.AddChildToAttributeTree() 
             AddChildButton.grid(column=0, row=propertyNum+1, padx=10, pady=20,sticky='w')
-            UpdateButton ["command"]=lambda : self.UpdateProperties(self.scrollable_frame,currentItem)
+            UpdateButton ['command']=lambda : self.UpdateProperties(self.scrollable_frame,currentItem)
         else:
             UpdateButton['command']=lambda : self.UpdateProperties(self.attributetreeValues,currentItem)
 

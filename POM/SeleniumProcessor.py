@@ -124,13 +124,12 @@ class SeleniumDriver:
         else:
             WebObjectAttrsDict['Display Name']=tag+'_'+WebObject.get_attribute('innerHTML')[:10] 
         xpath='.//'+tag+'[' 
-        print(WebObject.get_property('attributes')) 
         for attr in WebObject.get_property('attributes'):
             WebObjectAttrsDict[attr['name']]= attr['value']
-            xpath=xpath+'@'+attr['name']+'=\"'+attr['value']+'\' and '
-            xpath = xpath[:-4]+']'
-            XMLroot = html.fromstring(self.driver.page_source) 
-            XMLtree = XMLroot.getroottree() 
+            xpath=xpath+'@'+attr['name']+'=\''+attr['value']+'\' and '
+        xpath = xpath[:-4]+']'
+        XMLroot = html.fromstring(self.driver.page_source) 
+        XMLtree = XMLroot.getroottree() 
         try:
             result=XMLtree.xpath(xpath)
             WebObjectAttrsDict['XPath'] =XMLtree.getpath(result[0]) 

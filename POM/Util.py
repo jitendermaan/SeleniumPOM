@@ -1,7 +1,8 @@
 
 from tkinter import Scrollbar,TclError,Canvas 
 import tkinter.ttk as ttk
-
+import os
+import sys
 class AutoScrollbar(Scrollbar): 
     def set(self, lo, hi): 
         if float(lo) <= 0.0 and float(hi) >= 1.0:
@@ -80,4 +81,10 @@ def scrollableTree(treeFrame,orientation) :
     return tree
 
 
+def get_correct_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
 
+    return os.path.join(base_path, relative_path)
