@@ -10,11 +10,11 @@ Once you have cloned the project. Run Object Model file in your IDE
 
 #### Create new Page Object Model:
 *   Click on File-->Create New POM..  
-![CreateNewFile](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/CreateNewFile.jpg)  
+![CreateNewFile](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/CreateNewFile.jpg)  
 
 *   Provide POM name and click on save  
-![SaveNewFile](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/CreateNewFileSave.jpg)  
+![SaveNewFile](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/CreateNewFileSave.jpg)  
 
 *   New POM file will be displayed as header  
-![NewFileCreated](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/CreatedNewFile.jpg)  
+![NewFileCreated](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/CreatedNewFile.jpg)  
 
