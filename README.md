@@ -30,9 +30,15 @@ Once you have cloned the project. Run Object Model file in your IDE
 3. Click on Add Object button and click on Web Object you want to add: This will get the details of all the attributes related to the object and displays it in new window.  
 Left side of screen will diaplay object and its parent.
 If a object has multiple frames than it will display the complete Heirarchy.
-Heirarchy will always start from Page and ends at webobject, it will also include any Frame in between.
+Heirarchy will always start from Page and ends at webobject, it will also include any Frame in between.    
 Right side of screen will display properties of the selected object from left side tree.
     ![Add New Object Click](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/AddNewObjectClick.jpg)  
     ![Click WebObject](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/ClickOnWebObject.jpg)
 
-4. 
+4. Update Object Property: If you want to update anhy property or display name for the object then update property directly on the window and click on update button.This will update object property beofre adding it to POM Repository.  
+Ex: in below example, i have updated the display name of the img_ to img_NewDisplayName  
+![Click WebObject](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/ClickOnWebObject.jpg)
+![Update Object](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/UpdateNewAddedObjectProperties.jpg)
+
+5. Click on Add Object: This will add the object in POM Repository.
+![Update Object](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/ObjectAdded.jpg)
