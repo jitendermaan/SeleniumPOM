@@ -1,7 +1,8 @@
 ### Below are the Pre requisites needed to execute\modify Selenium POM Project
 
 1. ### [Download Python](https://www.python.org/downloads/)
-2. ### Install below required packages:
+2. ### [Install PyDev ](https://www.pydev.org/manual_101_install.html)(optional)
+3. ### Install below required packages:
    #### 1. PIP
    pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4 downloaded from python.org
    or 
