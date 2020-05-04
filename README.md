@@ -9,10 +9,10 @@ Indeed we can use different approach to create and manage Page Objects in Seleni
 or any you can save object attributes in flat file or any other type of files.
 
 In all the above approach there are few common issues that can surface while creating Object Repository:
-### 1. Adding Object
+1. Adding Object
        1. We have to find Object Property in Chrome and add it manually to the Object Repository file
        2. Adding multiple attribute for a object is even more cumbersome. It is not easy to remove or add a single attribute for identifying Object
-### 2. Standard Approach
+2. Standard Approach
    1. When multiple team members are working on the same project, it is possible that someone uses different approach to add obejct attributes which might not in line with the defined standards
 3. Managing Objects
    1. As the size of Objects and pages increased it is becoming more dificult to handle the objects. Finding an object itself is a daunting task in large collection of pages. 
