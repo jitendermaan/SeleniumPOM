@@ -1,6 +1,6 @@
-## SeleniumPOM 
-__Tool to create Object Repository for Selenium projects__
----
+## SeleniumPOM   
+Tool to create Object Repository for Selenium projects
+
 This projet is created to simplify and standardize the way we are using Page Object Model or Object Repository in Selenium. As we know in selenium does not provide any native Object repository manager as we have in other paid automation tools like UFT or RFT.  
 Indeed we can use different approach to create and manage Page Objects in Selenium like:  
 1. Page Object Model (Using Class\Object)
