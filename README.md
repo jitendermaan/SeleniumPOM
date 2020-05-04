@@ -1,6 +1,41 @@
 ## SeleniumPOM
 Tool to create Object Repository for Selenium projects
 
+This projet is created to simplify and standardize the way we are using Page Object Model or Object Repository in Selenium. As we know in selenium does not provide any native Object repository manager as we have in other paid automation tools like UFT or RFT.  
+Indeed we can use different approach to create and manage Page Objects in Selenium like:  
+1. Page Object Model (Using Class\Object)
+2. Excel sheet (Adding Object Property to Excel and read it while execution)
+3. XML file (Adding Object Properties in XML format)
+or any you can save object attributes in flat file or any other type of files.
+
+In all the above approach there are two common issues that can surface :
+1. Adding Object
+   1. We have to find Object Property in Chrome and add it manually to the Object Repository file
+   2. Adding multiple attribute for a object is even more cumbersome. It is not easy to remove or add a single attribute for identifying Object
+2. Standard Approach
+   1. When multiple team members are working on the same project, it is possible that someone uses different approach to add obejct attributes which might not in line with the defined standards
+3. Managing Objects
+   1. As the size of Objects and pages increased it is becoming more dificult to handle the objects. Finding an object itself is a daunting task in large collection of pages. 
+   2. Modifying\Adding new objects becomes more dificult with increase in size of Object Repository.
+
+We thought that it can considerably reduce the Object identification and Object Management hassles and efforts if we have a UI based tool that can address all the above issues.
+
+SeleniumPOM tool is created to overcome all the obove issues:
+1. Adding Object : This tool makes it quick and hassle free to add new object with multiple properties and you can select a single property or a group of properties to identify object
+   1. We can add object directly by clicking on the object on browser, this will fetch all the properties of the object and you can select which property to use by selecting the checkbox
+   2. Delay Add: We can add drop down menu items or other objects just by using delay add feature. It will wait for 5 second and then add the object under cursor
+   3. Add object manually: We can add Objects, their hierarchy and properties manually also, In case it can not be identifiied by tool or if it is a non GUI Object
+   
+2. Standard Approach: This tool has defined XML pattern which consists of Page-->Frame(if it is present)-->Object heirarchy to manage objects. All Heirarchies have there own properties for identifications
+
+3. Managing Objects: This tool represents the Object collection XML in an interactive GUI application where you can add new object, modify objects with just one click, add\remove or update object properties.
+   1. This tool makes it easier to read the Object Repository. It represents all the pages and its object as a tree structure and you can easily select the object to view its properties.
+   2. It is easier to edit or add object properties with just few clicks
+   3. XML file can be easily shared with the team
+   
+
+
+
 [PreRequisite to execute this project](./PreRequisite.md)
 
 * ### Guide to Use Selenium POM
