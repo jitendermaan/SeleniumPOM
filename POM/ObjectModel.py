@@ -118,11 +118,13 @@ class myApp:
         print ('This is a simple example of a menu!')
 
     def SaveFile(self):
-        self.XML.saveXML(self.POMTreeView)
+        self.XML.saveXML(self.tree,self.POMTreeView)
 
     def SaveFileAs(self):
-        self.XML.saveXML(self.tree, 'newFile')
-        self.tree.heading('#0', text=self.XML.fileName)
+        self.XML.saveXML(self.tree,self.POMTreeView,'newfile')
+        #=======================================================================
+        # self.tree.heading('#0', text=self.XML.fileName)
+        #=======================================================================
     def Settings(self):
         self.config.displaySettingPanel()
         
@@ -249,7 +251,8 @@ class myApp:
         
     def updatePOMTree(self,propertyWindow, objDict, actionType=None):
         currItem=self.attributeTree.focus() 
-        currObject=objDict[currItem] 
+        objectToAdd=objDict[currItem] 
+        currObject=objectToAdd
         addToObject='' 
         objList=[currObject.ObjectID] 
         if self.tree==None:
@@ -273,7 +276,8 @@ class myApp:
             self.tree.insert(addToObject, 'end', iid=childObj.ObjectID, text=childObj.DisplayName) 
             addToObject=childObj.ObjectID
         propertyWindow.destroy() 
-        Util.focusTree(self.tree,currItem)
+        Util.focusTree(self.tree,objectToAdd.ObjectID)
+        print ('Object to Focus :'+currObject.ObjectID)
         
     def AddChildToAttributeTree(self): 
         for widget in self.scrollable_frame.winfo_children():
@@ -312,7 +316,7 @@ class myApp:
         self.addObjectIndentificationFields(self.attributeTree, self.scrollable_frame)
         
     def addObjectIndentificationFields (self, objTree,Scrollableframe, objtype=None):
-        objectTypeList=[ 'POM Page'] if len(objTree.get_children())==0 else [ 'POM_frame', 'POM_Object'] 
+        objectTypeList=[ 'POM_Page'] if len(objTree.get_children())==0 else [ 'POM_frame', 'POM_Object'] 
         ttk.Label(Scrollableframe, text='Object Type', justify='left').grid(column=0, row=0, padx=5, sticky='w') 
         ObjectTypeCombo=ttk.Combobox(Scrollableframe, values=objectTypeList, state='readonly') 
         ObjectTypeCombo.grid(column=1, row=0, sticky='we') 
@@ -324,7 +328,7 @@ class myApp:
     
     def getObjectList(self,Scrollableframe, ObjectTypeCombo, comboExample):
         listObjectName=[] 
-        if ObjectTypeCombo.get()=='POM Page': 
+        if ObjectTypeCombo.get()=='POM_Page': 
             if self.tree!=None : 
                 for child in self.tree.get_children():
                     listObjectName.append(child) 
@@ -380,12 +384,12 @@ class myApp:
         else:
             if objtype=='child':
                 currentItem=self.attributeTree.focus() 
-                currObj=self.ObjectPropertyTree.objectDict[currentItem] 
-                self.ObjectPropertyTree.createTreeObject(currObj)
+                currParentObj=self.ObjectPropertyTree.objectDict[currentItem] 
+                currObj=self.ObjectPropertyTree.createTreeObject(currParentObj)[1]
             else:
                 self.ObjectPropertyTree=TreeProcessor.ObjectPropertyTree(self.attributeTree, treevals=treeManual) 
-                self.ObjectPropertyTree.createTreeObject()
-
+                currObj=self.ObjectPropertyTree.createTreeObject()[1]
+            Util.focusTree(self.attributeTree, currObj.ObjectID)
     def createPOMTree (self, processType=None): 
         if self.tree!=None:
             self.tree.destroy() 

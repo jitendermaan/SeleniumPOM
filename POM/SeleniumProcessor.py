@@ -83,7 +83,7 @@ class SeleniumDriver:
             attrsList.append(pageAttrsDict) 
             x,y=coordinates 
             self.objWebElement=self.driver.execute_script('return document.elementFromPoint('+str(x)+', '+str(y-self.browser_navigation_panel_height)+ ');') 
-            while self.objWebElement !=None and self.objWebElement.tag_name=='iframe' or self.objWebElement.tag_name=='frame':
+            while self.objWebElement !=None and (self.objWebElement.tag_name=='iframe' or self.objWebElement.tag_name=='frame'):
                 frameXLoc=self.objWebElement.location['x'] 
                 frameYLoc=self.objWebElement.location['y'] 
                 frameAttrsDict['Display Name']=self.objWebElement.get_attribute('name') 
@@ -103,7 +103,7 @@ class SeleniumDriver:
                     self.objWebElement=obj
                     attrsList.append(self.getAttributes())
             self.attributeList=attrsList 
-            print (attrsList, sep='\n' ) 
+
             if ScreenCoverWindow !=None :
                 ScreenCoverWindow.destroy()
         except SelException.UnexpectedAlertPresentException: 

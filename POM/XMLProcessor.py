@@ -78,13 +78,14 @@ class XML:
 
     def saveXML(self,tree, POMTreeView,processType=None): 
         if tree!=None and len(tree.get_children())>0:
-            if self.fileName==None:
-                files = [( 'ORFile', '*.xml.')] 
+            if self.fileName==None or processType=='newfile':
+                files = [( 'ORFile', '*.xml')] 
                 file = asksaveasfile(title = "Select folder", filetypes = files, defaultextension = files) 
                 self.filePath=file.name
                 self.fileName=((file.name).split('/')[-1]).split('.')[0] 
-                self.saveNewXML(tree, POMTreeView)
-                
+                tree.heading('#0', text=self.fileName)
+            self.saveNewXML(tree, POMTreeView)
+            
     def saveNewXML(self, POMtree, POMTreeView):
         SelPOMFile = ET.Element( 'POM_File', Name=self.fileName) 
         for child in POMtree.get_children():

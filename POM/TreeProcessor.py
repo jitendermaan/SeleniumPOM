@@ -249,6 +249,7 @@ class ObjectPropertyTree:
         self.objectDict={} 
         self.objectId=None 
         self.ParentID=None 
+        self.currentObject=None
         self.manualTreeVals=kwargs['treevals'] if 'treevals' in kwargs else None 
         if attributeList!=None:
             currMainObjectAttr=self.attrList.pop(0) 
@@ -260,8 +261,8 @@ class ObjectPropertyTree:
             
     def createObjectTree(self, attributeList, currParentObject): 
         for objAttrMap in attributeList:
-            currParentObject=self.createTreeObject(currParentObject, objAttrMap)
-        Util.focusTree(self.objTree, currParentObject.ObjectID)   
+            currParentObject,currObject=self.createTreeObject(currParentObject, objAttrMap)
+        Util.focusTree(self.objTree, currObject.ObjectID)   
     def createTreeObject(self,currParentObject=None, objAttrMap=None): 
         if objAttrMap==None:
             objAttrMap={} 
@@ -279,7 +280,9 @@ class ObjectPropertyTree:
                 currObject=TreePOMObject(objectaction='newobject', attributeDict=objAttrMap, objectid=self.objectId, parentid=self.ParentID, displayname= displayname, objecttype=objAttrMap['Object Type'])
         else:
             displayname=objAttrMap['Display Name'] 
-            self.objectId=currParentObject.ObjectID+ '_'+displayname 
+            self.objectId=currParentObject.ObjectID+ '_'+displayname
+            if self.objectId in self.objectDict:
+                self.objectDict=self.objectId +'_1'
             currObject=TreePOMObject(objectaction='newobject', attributeDict=objAttrMap,objectid=self.objectId, parentid=self.ParentID, displayname=displayname) 
         self.objectDict[self.objectId]=currObject 
         if currParentObject!=None and (currParentObject.ObjectType=='POM_Page' or currParentObject.ObjectType=='POM_frame' or currParentObject.ObjectType=='POM_iframe'): 
@@ -289,7 +292,7 @@ class ObjectPropertyTree:
                 currParentObject=currObject
         currObject.addTree(self.objTree, objectid=self.objectId, displayname=currObject.DisplayName, parentid=self.ParentID)
         
-        return currParentObject
+        return currParentObject,currObject
         #=======================================================================
         # Util.focusTree(self.objTree, currObject.ObjectID)
         #=======================================================================
