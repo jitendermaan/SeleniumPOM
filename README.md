@@ -8,7 +8,7 @@ Indeed we can use different approach to create and manage Page Objects in Seleni
 3. XML file (Adding Object Properties in XML format)
 or any you can save object attributes in flat file or any other type of files.
 
-In all the above approach there are two common issues that can surface :
+In all the above approach there are few common issues that can surface while creating Object Repository:
 1. Adding Object
    1. We have to find Object Property in Chrome and add it manually to the Object Repository file
    2. Adding multiple attribute for a object is even more cumbersome. It is not easy to remove or add a single attribute for identifying Object
