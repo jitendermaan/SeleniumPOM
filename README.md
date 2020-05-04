@@ -1,4 +1,5 @@
-## SeleniumPOM
+### SeleniumPOM 
+-------
 Tool to create Object Repository for Selenium projects
 
 This projet is created to simplify and standardize the way we are using Page Object Model or Object Repository in Selenium. As we know in selenium does not provide any native Object repository manager as we have in other paid automation tools like UFT or RFT.  
@@ -9,7 +10,7 @@ Indeed we can use different approach to create and manage Page Objects in Seleni
 or any you can save object attributes in flat file or any other type of files.
 
 In all the above approach there are few common issues that can surface while creating Object Repository:
-1. #### Adding Object
+1. __Adding Object__
    1. We have to find Object Property in Chrome and add it manually to the Object Repository file
    2. Adding multiple attribute for a object is even more cumbersome. It is not easy to remove or add a single attribute for identifying Object
 2. #### Standard Approach
@@ -32,7 +33,7 @@ SeleniumPOM tool is created to overcome all the obove issues:
    1. This tool makes it easier to read the Object Repository. It represents all the pages and its object as a tree structure and you can easily select the object to view its properties.
    2. It is easier to edit or add object properties with just few clicks
    3. XML file can be easily shared with the team
-   
+ ---  
 
 
 
