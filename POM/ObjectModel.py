@@ -249,22 +249,23 @@ class myApp:
     def UpdateProperties(self,treeVal,key):
         self.ObjectPropertyTree.updateObjectDict(treeVal,key)
         
-    def updatePOMTree(self,propertyWindow, objDict, actionType=None):
+    def updatePOMTree (self,propertyWindow, objDict, actionType=None):
         currItem=self.attributeTree.focus() 
         objectToAdd=objDict[currItem] 
         currObject=objectToAdd
-        addToObject='' 
-        objList=[currObject.ObjectID] 
+        addToObject=''
+        objList=[currObject.ObjectID]
         if self.tree==None:
             self.createPOMTree()
         propertyWindow.attributes('-topmost', False)
         if self.tree.exists(currObject.ObjectID):
-            messagebox.showinfo( 'Object Present with ID: ='+currObject.ObjectID,'Object Present with ID: '+currObject.ObjectID+ '. \nPlease Change the Name or Update object Directly from Attribute Window' )
+            messagebox.showinfo('Object Present with ID: ='+currObject.ObjectID,'Object Present with ID: '+currObject.ObjectID+ '. \nPlease Change the Name or Update object Directly from Attribute Window' )
         else:
             self.POMTreeView.treeDict[currObject.ObjectID]=currObject 
             while currObject.ParentID!=None and len(currObject.ParentID)>0: 
                 if self.tree.exists(currObject.ParentID):
                     addToObject=currObject.ParentID
+                    self.POMTreeView.treeDict[addToObject].childList.append(currObject)
                     break 
                 else:
                     currObject=objDict[currObject.ParentID] 

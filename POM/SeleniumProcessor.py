@@ -5,6 +5,7 @@ from lxml.etree import XPathEvalError
 import selenium.common.exceptions as SeleniumException
 from tkinter import messagebox
 
+
 class SeleniumDriver: 
     def __init__(self, config, browserName=None):
         self.config=config
