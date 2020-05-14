@@ -70,7 +70,7 @@ class XML:
             if pageObject.DisplayName==strName:
                 self.currObject=pageObject
                 return
-            for webObject in pageObject. WebObjectList:
+            for webObject in pageObject.WebObjectList:
                 if webObject.DisplayName==strName:
                     self.currObject=webObject
                     webObject.parentPageName=pageObject.DisplayName
