@@ -1,7 +1,5 @@
 from Test.XMLProcessor import XML
-import inspect
 from selenium import webdriver
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.remote.webdriver import WebDriver
 
 objectDict = []
@@ -12,81 +10,30 @@ def get_xml(xml_path):
     xml_pom = XML(xml_path)
     objectDict = xml_pom.treeDict
 
-
-class POMDriver:
-    def __init__(self, xmlpath):
-        self.XML = XML(xmlpath)
-        self.Dict = self.XML.treeDict
-        self.ObjectId = None
-        self.objPage=None
-    def Page(self,pagename):
-        self.ObjectId=pagename
-        self.objPage=Page(self.Dict,pagename)
-        #self.ObjectId=self.objPage.ObjectID
-        return self.objPage
-        #print (str(len(inspect.stack())))
-        #statement = inspect.stack()[len(inspect.stack())-1].code_context[0]
-        #objectaddrress = statement.split('Page')[1]  # add catch for index out of range
-        #print ('left :'+str(statement.index('Page(\'')+len('Page(\'')))
-        #print ('right:'+str(statement.index('\')')))
-        #print (statement[20:30])
-        #for i in objectaddrress.split(').'):
-        #    print(i)
-        #return Page(self.Dict,pagename)
+def create_xpath(self,propertyList):
+    tag='*'
+    xpath=''
+    for oProperty in propertyList:
+        if oProperty.Selected=='1' or  oProperty.Selected==1:
+            if oProperty.propertyName.strip() == 'tag':
+                tag=oProperty.Value
+            elif oProperty.propertyName.strip() == 'text' or oProperty.propertyName.strip() == 'innerHTML':
+                xpath = xpath + 'text()=\'' + oProperty.Value + '\' and '
+            else:
+                xpath=xpath+'@'+oProperty.propertyName+'=\''+oProperty.Value+'\' and '
+    if xpath=='':
+        raise Exception("Xpath is null. Object property not selected"
+                        "\n Please make sure that you have selected the property that you intended"
+                        " to use for object identification")
+    else:
+        xpath=('.//'+tag+'['+xpath)[:-4]+']'
+        return WebDriver.find_element_by_xpath(self,xpath)
 
 
+def getElement(self,objectid):
+    currobj=objectDict[objectid]
+    properties=currobj.propertyList
+    return create_xpath(self,properties)
 
-class Page:
-    def __init__(self, treedict,pageName):
-        self.ObjectID=pageName
-        self.objFrame=None
-        self.ObjWebObject=None
-        self.treeDict=treedict
-        self.PageObject=self.treeDict[pageName]
-        self.objectID=self.PageObject.ObjectID
-
-
-    def Frame(self, FrameName):
-        self.objFrame=Frame(self.ObjectID+'_'+FrameName)
-        return self.objFrame.ObjectID
-
-    def WebObject(self,objectName):
-        self.ParentObjectID =self.ParentObjectID+'_'+objectName
-
-    @property
-    def ObjectID(self):
-        return self.strObjectID
-    @ObjectID.setter
-    def ObjectID(self,strObjectID):
-        self.strObjectID=strObjectID
-
-class WebObject:
-
-    def __init__(self,objectid):
-        self.strObjectID=None
-        self.ObjectID=objectid
-
-    @property
-    def ObjectID(self):
-        return self.strObjectID
-
-    @ObjectID.setter
-    def ObjectID(self, strObjectID):
-        self.strObjectID = strObjectID
-
-
-class Frame:
-    def __init__(self, ObjectID):
-        self.strObjectID = None
-        self.ObjectID = ObjectID
-        self.ObjWebObject=None
-
-    def WebObject(self, objectname):
-        self.ObjWebObject=WebObject(self.ObjectID+'_'+objectname)
-        return self.ObjWebObject
-    @property
-    def ObjectID(self):
-        return self.strObjectID
-    @ObjectID.setter
-    def ObjectID(self,strObjectID):
-        self.strObjectID=strObjectID
+webdriver.uploadXML=get_xml
+WebDriver.getElement= getElement
