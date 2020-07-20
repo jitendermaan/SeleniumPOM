@@ -96,3 +96,6 @@ It will start a 5 sec counter on top left of your screen. Before that timer hits
 
 4. Click on Add Object. It will add the object to the Object repository tree.
 ![Update Object with Delay](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/AddDelay4.png)
+
+   
+### Add Object Manually
