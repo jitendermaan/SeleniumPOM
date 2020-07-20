@@ -88,7 +88,7 @@ It is helpful when you have to select any dropdown or any other object that will
 It will start a 5 sec counter on top left of your screen. Before that timer hits to 0 move your mouse pointer to the object you want to add.
 ![Update Object with Delay](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/AddWithDelay1.png)
 
-2. Object properties of added object will be displayed.
+2. Object properties of added object will be displayed.   
 ![Update Object with Delay](https://github.com/jitendermaan/SeleniumPOM-Executable/blob/master/images/AddDelay2.png)
 
 3. Update Name or any other property and select the properties that you want to include in the object identification property.
