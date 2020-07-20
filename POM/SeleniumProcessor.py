@@ -10,6 +10,7 @@ class SeleniumDriver:
     def __init__(self, config, browserName=None):
         self.config=config
         self.browser_navigation_panel_height=None
+        self.browser_navigation_panel_width = None
         self.root=None
         self.strBrowser=None 
         self.currDriver=None
@@ -26,7 +27,6 @@ class SeleniumDriver:
                 self.driver=browserName
                 self.driver.maximize_window() 
                 self.driver.get(url)
-                self.browser_navigation_panel_height = self.driver.execute_script('return window.outerHeight - window.innerHeight;')
             else:
                 if self.driver !=None:
                     self.driver.quit()
@@ -82,8 +82,14 @@ class SeleniumDriver:
             pageAttrsDict['title']=self.driver.title 
             pageAttrsDict['tabindex']=len(self.driver.window_handles) - 1 
             attrsList.append(pageAttrsDict) 
-            x,y=coordinates 
-            self.objWebElement=self.driver.execute_script('return document.elementFromPoint('+str(x)+', '+str(y-self.browser_navigation_panel_height)+ ');') 
+            x,y=coordinates
+            print ('page coordinates are: '+str(coordinates))
+            self.browser_navigation_panel_height = self.driver.execute_script(
+                'return window.screenY +(window.outerHeight - window.innerHeight);')
+            self.browser_navigation_panel_width = self.driver.execute_script(
+                'return window.screenX +(window.outerWidth - window.innerWidth);')
+
+            self.objWebElement=self.driver.execute_script('return document.elementFromPoint('+str(x-self.browser_navigation_panel_width)+', '+str(y-self.browser_navigation_panel_height)+ ');')
             while self.objWebElement !=None and (self.objWebElement.tag_name=='iframe' or self.objWebElement.tag_name=='frame'):
                 frameXLoc=self.objWebElement.location['x'] 
                 frameYLoc=self.objWebElement.location['y'] 
